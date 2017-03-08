@@ -1,0 +1,46 @@
+-> You require a server.
+-> Disable SELINUX.
+
+
+1) Install required dependency packages.
+  
+   # yum install -y apr-devel apr-util-devel pcre-devel gcc 
+   
+2) Download the apache source.
+
+   # wget http://mirror.fibergrid.in/apache//httpd/httpd-2.4.25.tar.gz
+   # tar -xf httpd-2.4.25.tar.gz
+   # cd httpd-2.4.25
+   # ./configure --help (It provides all the options)
+   
+   TO Install in diffferent location then 
+   # ./configure --prefix=/d01/web01
+   # make clean 
+   # make
+   # make install 
+   
+   # cd /d01/web01
+   # ls
+   
+   
+   You would be seeing following directory structure.
+bin       	*-> All binary files
+build		     -> What build options you have used
+cgi-bin		   -> Apache Scripts
+conf		    *-> Configuration Files  
+error		     -> Error templates
+htdocs		  *-> Web Sites
+icons		     -> Icons / logos
+include		   -> Additional configuration
+logs		    *-> All log files
+man			     -> Help Info 
+manual		   -> Help Info
+modules		   -> Modules of apache
+
+
+To handle the start & Stop of web server with source you have a control script.
+Script Location : /d01/web01/bin/apachectl
+
+To start the service.
+
+# /d01/web01/bin/apachectl start 
