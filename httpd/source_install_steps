@@ -44,3 +44,44 @@ Script Location : /d01/web01/bin/apachectl
 To start the service.
 
 # /d01/web01/bin/apachectl start 
+
+
+Download and host multiple web sites.
+
+# cd /d01/web01/htdocs
+# wget https://github.com/versionit/fortuna/blob/master/httpd/ecommerce.tgz?raw=true -O ecommerce.tgz
+# wget https://github.com/versionit/fortuna/blob/master/httpd/ers.tgz?raw=true -O ers.tgz
+
+Access the web sites from browser.
+
+http://104.196.12.24/ecommerce
+
+http://104.196.12.24/ERS/ 
+With ERS you are going to get list of files.
+TO fix it moddify the configuration.
+
+# vim /d01/web01/conf/httpd.conf
+  Change the following line
+  DirectoryIndex index.html
+  TO
+  DirectoryIndex index.html index.jsp
+  
+  <ESC>:wq   --> Save and quit
+  
+Restart the service
+# /d01/web01/bin/apachectl restart
+
+And chekc the ERS web site.
+
+------------------------------------------------------------------------
+Installing multiple Instances
+
+   # cd httpd-2.4.25
+   # ./configure --prefix=/d01/web02
+   # make clean 
+   # make
+   # make install 
+   
+   # cd /d01/web02
+   # ls
+-------------------------------------------------------------------------------
