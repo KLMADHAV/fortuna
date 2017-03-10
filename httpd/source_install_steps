@@ -85,3 +85,84 @@ Installing multiple Instances
    # cd /d01/web02
    # ls
 -------------------------------------------------------------------------------
+
+
+-----------------
+VirtualHosting Configuration in Source
+-----------------
+
+Assuming you have installed web server in /d01/web01
+
+1) Make your desktop ready .
+
+	1) Disble any anti virus if you have enabled.
+	2) Open wordpad.exe with "Run as Administrator"
+	3) Open a file in wordpad.
+		C:\Windows\System32\drivers\etc\hosts
+		
+		Syntax : IP NAME
+		
+		104.196.12.24	ecommerce.versionit.com
+		104.196.12.24	ers.versionit.com
+	
+	Save the file, You can enable anti virus.
+	
+2) Verify whether the chages you have made are working or not.
+
+Open Command Prompt:
+
+	ping ecommerce.versionit.com
+	ping ers.versionit.com
+	
+	
+3) Add virtual hosts on server side.
+
+Config file : /d01/web01/conf/httpd.conf.
+
+Add the following content.
+# vim /d01/web01/conf/httpd.conf
+====================================
+<VirtualHost *:80>
+        ServerName ecommerce.versionit.com
+        DocumentRoot /d01/web01/htdocs/ecommerce
+</VirtualHost>
+
+
+<VirtualHost *:80>
+        ServerName ers.versionit.com
+        DocumentRoot /d01/web01/htdocs/ERS
+        DirectoryIndex index.jsp
+</VirtualHost>
+====================================
+
+4) Restart the service.
+
+	# /d01/web01/bin/apachectl restart 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
