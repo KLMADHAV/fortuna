@@ -140,7 +140,33 @@ Add the following content.
 	# /d01/web01/bin/apachectl restart 
 	
 	
-	
+--------------------------------------------------------------------
+# yum install openssl-devel -y
+# ./configure --enable-ssl --prefix=/d01/web01
+# make clean 
+# make
+# make install
+
+
+Follow the following steps 
+
+1) Add the following line in end of main config  file
+
+# vim /d01/web01/conf/httpd.conf
+
+LoadModule socache_shmcb_module modules/mod_socache_shmcb.so
+LoadModule ssl_module modules/mod_ssl.so
+Include conf/extra/httpd-ssl.conf
+
+2) Generate key and crt 
+# cd /d01/web01/conf
+# openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out 
+server.crt
+
+
+Simply restart your web server
+# /d01/web01/bin/apachectl restart
+
 	
 	
 	
