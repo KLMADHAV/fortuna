@@ -28,3 +28,45 @@ Tomcat2:
 
 Tomcat1 :
 # /opt/tomcat1/bin/shutdown.sh
+
+Tomcatt2 :
+
+# /opt/tomcat1/bin/shutdown.sh
+
+
+-----------------------------------------
+Changing port number :
+
+Change it in 5 locations in a file server.xml
+
+
+1) Line No 22 : 8005 -> 9005
+2) Line NO 69 : 8080 -> 9090
+3) Line No 71 : 8443 -> 9443
+4) Line NO 116 :
+				8009 -> 9009
+				8443 -> 9443
+
+-------------------------------------------
+
+Tune tomcat startup:
+
+Assuming the tomcat is from Source.
+
+1) Disable JAR file scanning.
+
+Edit : <tomcat-source>/conf/catalina.properties
+
+tomcat.util.scan.StandardJarScanFilter.jarsToSkip=*
+
+Note : Referece Link : http://www.gpickin.com/index.cfm/blog/how-to-get-your-tomcat-to-pounce-on-startup-not-crawl
+
+2) Add WAR file security disable.
+
+Edit : <tomcat-source>/bin/catalina.sh
+
+From : 
+JAVA_OPTS="$JAVA_OPTS -Djava.protocol.handler.pkgs=org.apache.catalina.webresources"
+
+TO:
+JAVA_OPTS="$JAVA_OPTS -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Djava.security.egd=file:/dev/./urandom"
