@@ -29,7 +29,7 @@ end
 #!/bin/bash
 
 ## Setting ENV includes disable SELINUX & FIREWALL and also setting autoshutdown 
-curl https://raw.githubusercontent.com/versionit/docs/master/vm-init.sh | bash
+curl https://raw.githubusercontent.com/versionit/fortuna/master/vm-init.sh | bash
 
 ## Install Tomcat Along with that
 
