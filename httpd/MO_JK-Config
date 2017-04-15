@@ -61,10 +61,8 @@ make install
 
 vim /d01/apache/conf/httpd.conf 
 
-<Add the following line>
-LoadModule jk_module modules/mod_jk.so
-
 <At the end of file add the following line>
+LoadModule jk_module modules/mod_jk.so
 Include conf/mod_jk.conf
 
 
