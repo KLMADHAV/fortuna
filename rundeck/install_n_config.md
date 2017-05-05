@@ -17,7 +17,7 @@
 `# sed -i -e '/grails.serverURL/ c grails.serverURL=http://104.198.90.250:4440' /etc/rundeck/rundeck-config.properties`
 
 ## Note: IP : `104.198.90.250 ` will be your public IP address of that instance
-## Note: The IP may change after you shutdown and start your server. So rub this command for every public IP changes.
+## Note: The IP may change after you shutdown and start your server. So run this command for every public IP changes.
 
 
 ### 3) Start the service
