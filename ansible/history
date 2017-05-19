@@ -1,0 +1,70 @@
+    2  yum install ansible -y 
+    3  cd /etc/ansible/
+   10  ansible -i inventory --list-hosts
+   11  ansible -i inventory --list-hosts 2>&1 |grep list
+   12  ansible -i inventory all --list-hosts 
+   14  ansible -i inventory all --list-hosts 
+   15  ansible -i inventory webservers --list-hosts 
+   16  ansible -i inventory appservers --list-hosts 
+   18  ansible -i inventory all --list-hosts 
+   19  ansible -i inventory singapore --list-hosts 
+   21  ansible -i inventory singapore --list-hosts 
+   23  ansible -i inventory singapore --list-hosts 
+   25  ansible -i inventory singapore --list-hosts 
+   26  ansible -i inventory ukservbers --list-hosts 
+   27  ansible -i inventory ukservers --list-hosts 
+   29  ansible -i inventory ukservers --list-hosts 
+   31  ansible -i inventory ukservers --list-hosts 
+   35  ansible --version
+   36  ansible all --list-hosts
+   37  vim /etc/ansible/hosts 
+   38  ansible all --list-hosts
+   39  ansible --version
+   40  export ANSIBLE_CONFIG=/tmp/ansible.cfg
+   41  ls -l /tmp/ansible.cfg
+   42  ansible --version
+   43  cp /etc/ansible/ansible.cfg /tmp/
+   44  ansible --version
+   46  ansible --version
+   48  cp /etc/ansible/ansible.cfg .ansible.cfg
+   50  ansible --version
+   51  rm -f .ansible
+   52  rm -f .ansible.cfg 
+   54  mkdir ansible 
+   55  cd ansible/
+   57  cp /etc/ansible/ansible.cfg .
+   61  ansible --version
+   63  ansible --version
+   65  cd ansible/
+   68  ansible all --list-hosts
+   70  ansible -i inventory all --list-hosts
+   71  ansible -i inventory all -m ping
+   73  ansible --version
+   74  ansible --help
+   75  ansible -i inventory --ssh-extra-args=StrictHostKeyChecking=no -m ping
+   76  ansible -i inventory -R StrictHostKeyChecking=no -m ping
+   77  ansible -i inventory --ssh-extra-args="-o StrictHostKeyChecking=no" -m ping
+   78  ansible -i inventory all --ssh-extra-args="-o StrictHostKeyChecking=no" -m ping
+   79  ssh ansiblenode1
+   83  ansible -i admin.pem ansiblenode1
+   87  ansible -i admin-key ansiblenode1
+   89  ssh -i admin.pem ansiblenode1
+   90  ssh -i admin.pem -l admin ansiblenode1
+   91  ansible --help
+   92  ansible -i inventory all --ssh-extra-args="-o StrictHostKeyChecking=no" -u admin --private-key=admin.pem -m ping 
+   93  ansible --version
+   94  vim ansible.cfg 
+   95  ansible all --list-hosts
+   96  vim ansible.cfg 
+   98  cd ansible/
+   99  vim ansible.cfg 
+  100  ansible all -m ping
+  101  ansible all -m shell -a uptime
+  103  ansible all -m setup
+  104  ansible all -m setup -a filter=ansible_distribution
+  112  ansible-playbook playbooks/01-first-play.yaml 
+  114  ansible-playbook playbooks/02-install-package.yaml 
+  116  ansible-playbook playbooks/02-install-package.yaml 
+  123  cp -r /root/ansible .
+  125  cd ansible/
+  127  history |grep ansible >history 
