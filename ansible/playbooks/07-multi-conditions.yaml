@@ -1,0 +1,9 @@
+- hosts: redhat
+  gather_facts: yes
+  tasks:
+    - name: Checking conditions
+      debug:
+        msg: "This is Centos 7 machine"
+      when:
+        - ansible_distribution == "CentOS"
+        - ansible_distribution_major_version == "6"

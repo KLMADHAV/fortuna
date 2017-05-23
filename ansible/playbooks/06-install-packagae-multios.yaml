@@ -1,0 +1,15 @@
+- hosts: all
+  gather_facts: yes
+  become: yes
+  tasks:
+    - name: Install gcc using yum 
+      yum:
+        name: gcc
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Install gcc using apt-get
+      apt:
+        name: gcc
+        state: present
+      when: ansible_os_family == "Debian"

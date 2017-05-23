@@ -1,0 +1,9 @@
+- hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Load variables
+      include_vars: "VARS/{{ansible_os_family}}.yaml"
+     
+    - name: Print pack_name
+      debug:
+        msg: "Variable = {{pack_name}}"

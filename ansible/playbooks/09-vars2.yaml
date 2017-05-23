@@ -1,0 +1,15 @@
+- hosts: redhat
+  gather_facts: no
+  vars:
+        pack_name: httpd
+
+  tasks:
+    - name: Access the pack_name variable
+      debug: 
+        msg: "variable value = {{pack_name}}"
+
+    - name: "Install package {{pack_name}}"
+      yum:
+        name: "{{pack_name}}"
+        state: present
+      become: yes

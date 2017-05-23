@@ -1,0 +1,10 @@
+- hosts: all
+  gather_facts: no
+  tasks:
+    - name: Run uptime command with shell module
+      shell: uptime
+      register: uptimeoutput
+
+    - name: Print uptime output on screen
+      debug: 
+        var: uptimeoutput.stdout

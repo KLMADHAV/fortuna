@@ -1,0 +1,6 @@
+- hosts: all
+  gather_facts: yes
+  tasks: 
+   - name: Collect OS Vendor
+     debug:
+        msg:  "OS Family = {{ ansible_os_family }}"

@@ -1,0 +1,17 @@
+- hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Load variables
+      include_vars: "VARS/{{ansible_os_family}}.yaml"
+     
+    - name: Install httpd
+      yum: 
+        name: "{{pack_name}}"
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Install apache2
+      apt:
+        name: "{{pack_name}}"
+        state: present
+      when: ansible_os_family == "Debian"
