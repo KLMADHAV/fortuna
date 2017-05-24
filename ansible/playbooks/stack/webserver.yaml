@@ -1,0 +1,52 @@
+- name: Check httpd source location
+  shell: ls -ld {{http_source_loc}}
+  register: out
+  become: yes
+  ignore_errors: yes
+
+- name: Download httpd source
+  unarchive: 
+    src: "{{http_url}}"
+    dest: "/home/{{project_user}}"
+    remote_src: True
+  become_user: "{{project_user}}"  
+  become: yes
+  when: out.rc == 2 
+
+- name: Check apache install directory
+  shell: ls -ld /home/{{project_user}}/apache
+  register: out
+  become: yes
+  ignore_errors: yes
+
+- name: Run  ./configure ; make clean ; make ; make install 
+  shell: "{{item}}"
+  args:
+    chdir: "{{http_source_loc}}"
+  become_user: "{{project_user}}"
+  become: yes
+  with_items:
+        - "./configure --prefix=/home/{{project_user}}/apache"
+        - "make clean"
+        - make
+        - "make install"
+  when: out.rc == 2
+
+- name: Copy the configuration file
+  template:
+    src: "stack/httpd.conf.j2"
+    dest: "/home/{{project_user}}/apache/conf/httpd.conf"
+  become_user: "{{project_user}}"
+  become: yes
+
+- name: Start a web server
+  shell: "/home/{{project_user}}/apache/bin/apachectl start"
+  become: yes 
+
+
+
+
+
+
+
+

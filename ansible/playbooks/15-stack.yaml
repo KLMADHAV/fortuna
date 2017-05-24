@@ -1,0 +1,7 @@
+- hosts: redhat
+  gather_facts: no
+  vars_files:
+        - "stack/vars.yaml"
+  tasks:
+        - include: "stack/prereq.yaml"
+        - include: "stack/webserver.yaml"

@@ -1,0 +1,6 @@
+- hosts: redhat
+  gather_facts: yes
+  tasks: 
+    - template: 
+        src: /tmp/sample
+        dest: /tmp/sample
