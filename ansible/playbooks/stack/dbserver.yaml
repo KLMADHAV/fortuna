@@ -1,0 +1,30 @@
+- name: Install DB Server
+  yum:
+    name: "{{item}}"
+    state: latest
+  with_items: 
+        - mariadb-server
+        - mariadb
+        - python-devel
+        - python2-pip
+        - mariadb-devel
+        - gcc
+  become: yes
+
+- name: Start mariadb server
+  service:
+        name: mariadb
+        state: started 
+  become: yes
+
+- name: copy ql file
+  copy:
+        src: stack/student.sql
+        dest: /tmp/student.sql
+
+- name: Configure Database
+  mysql_db:
+    state: import
+    name: all
+    target: /tmp/student.sql   
+  become: yes

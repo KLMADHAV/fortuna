@@ -1,0 +1,8 @@
+- hosts: redhat
+  gather_facts: no
+  become: yes
+  tasks: 
+        - name : Remove a file
+          file: 
+                path: /tmp/abc
+                state: absent

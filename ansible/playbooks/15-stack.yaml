@@ -3,5 +3,7 @@
   vars_files:
         - "stack/vars.yaml"
   tasks:
-        - include: "stack/prereq.yaml"
-        - include: "stack/webserver.yaml"
+        #- include: "stack/prereq.yaml"
+        #- include: "stack/webserver.yaml"
+        #- include: "stack/appserver.yaml"
+        - include: "stack/dbserver.yaml"

@@ -1,0 +1,7 @@
+- hosts: redhat
+  gather_facts: no
+  become: yes
+  #become_user: fortuna
+  tasks:
+   - name: start tomcat
+     shell: "su - fortuna -c '/home/fortuna/tomcat/tomcatctl.sh start'"

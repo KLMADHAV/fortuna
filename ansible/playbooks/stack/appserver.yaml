@@ -1,0 +1,65 @@
+- name: Download Tomcat
+  get_url:
+    url: "{{tomcat_url}}"
+    dest: "{{tomcat_tar_loc}}"
+  become: yes
+  become_user: "{{project_user}}"
+
+- name: Check  Tomcat Location
+  shell: ls -ld {{tomcat_loc}} 
+  register: out
+  ignore_errors: yes
+  become: yes
+
+- name: Download Tomcat Location
+  unarchive: 
+    src: "{{tomcat_tar_loc}}"
+    dest: "/home/{{project_user}}"
+    remote_src: yes
+  become: yes
+  become_user: "{{project_user}}"
+  when: out.rc == 2
+
+- name: Remove existing war files
+  file:
+    path: "{{tomcat_loc}}/webapps/{{item}}"
+    state: absent
+  with_items:
+        - student
+        - student.war
+  become: yes
+  become_user: "{{project_user}}" 
+
+- name: Download war file
+  get_url:
+    url: "{{webapp_url}}"
+    dest: "{{webapp_file}}"
+  become: yes
+  become_user: "{{project_user}}" 
+
+- name: Start Tomcat 
+  shell: "su {{project_user}} -c \"{{tomcat_start_script}} start\""
+  become: yes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,3 +1,10 @@
 project_user: fortuna
 http_url: "http://redrockdigimark.com/apachemirror//httpd/httpd-2.4.25.tar.gz"
 http_source_loc: "/home/{{project_user}}/httpd-2.4.25"
+tomcat_url: "https://github.com/versionit/fortuna/blob/master/tomcat9-tuned.tar.gz?raw=true"
+tomcat_loc: "/home/{{project_user}}/tomcat"
+tomcat_tar_loc: "/home/{{project_user}}/tomcat9-tuned.tar.gz"
+webapp_loc: "/home/{{project_user}}/tomcat/webapps"
+webapp_url: "https://github.com/versionit/fortuna/blob/master/tomcat/studentapp/student.war?raw=true"
+webapp_file: "{{webapp_loc}}/student.war"
+tomcat_start_script: "/home/{{project_user}}/tomcat/tomcatctl.sh"
