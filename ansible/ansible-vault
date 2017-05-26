@@ -1,0 +1,12 @@
+### Encrypt the playbook file
+
+# ansible-vault encrypt playbooks/19-local-facts1.yaml
+<Give the password>
+
+### Decrypt the playbook file
+# ansible-vault decrypt playbooks/19-local-facts1.yaml
+<Give the password which you used for encrypotion>
+
+### Run the encrypted playbook file.
+#  ansible-playbook playbooks/19-local-facts1.yaml  --ask-vault-pass
+<Give the password which you set while encrypting>
