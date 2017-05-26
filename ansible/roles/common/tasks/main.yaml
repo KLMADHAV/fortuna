@@ -1,0 +1,17 @@
+- name: Disable SELINUX
+  lineinfile:
+    path: /etc/selinux/config
+    regexp: '^SELINUX='
+    line: 'SELINUX=disabled'
+  notify: disable-selinux
+
+- name: Install basic packages
+  yum:
+    name: "{{item}}"
+    state: installed
+  with_items: "{{packages}}"
+
+- name: Copy the sample file
+  copy:
+        src: abc.txt
+        dest: /tmp/abc.txt
