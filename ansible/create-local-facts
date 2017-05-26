@@ -1,0 +1,23 @@
+Process to create own facts: (Local for each server)
+------------------------------
+
+On Client Machines:
+---------------
+
+# mkdir -p /etc/ansible/facts.d
+
+# vi sample.fact
+
+[default]
+env=webserver
+
+On Server Side:
+
+# ansible all -m all
+
+
+On Playbook:
+
+{{ansible_local.sample.default.env}}
+
+
